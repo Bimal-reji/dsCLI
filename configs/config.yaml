@@ -1,0 +1,56 @@
+# dscli project configuration.
+# Copy this file to your project's configs/config.yaml and adjust the values.
+# Every value here can be overridden at runtime via CLI options.
+
+project:
+  name: my-project
+
+data:
+  raw_dir: data/raw          # untouched source data
+  interim_dir: data/interim  # cleaned data
+  processed_dir: data/processed  # splits and feature matrices
+  external_dir: data/external    # third-party data
+  train: data/processed/train.csv
+  validation: data/processed/validation.csv
+  test: data/processed/test.csv
+  target: churn               # column to predict (set to null if unknown yet)
+  id_column: customer_id      # non-informative identifier column
+  drop_columns: []            # extra columns to ignore during training
+
+cleaning:
+  drop_duplicates: true
+  missing_strategy: mean      # mean | median | most_frequent | constant | drop
+  missing_constant: 0
+  drop_high_missing_threshold: 0.8  # drop columns with >=80% missing
+  outlier_method: null        # iqr | zscore | null
+  outlier_threshold: 3.0
+
+features:
+  scale_numerical: true
+  scaler: standard            # standard | minmax | robust
+  categorical_encoding: onehot  # onehot | ordinal
+  handle_unknown: ignore
+  max_categories: 50          # categorical columns with more levels are dropped
+
+training:
+  test_size: 0.2
+  validation_size: 0.1
+  stratify: true
+  cv_folds: 5
+  random_state: 42
+  scoring: null               # null -> auto (roc_auc_ovr / r2)
+
+model:
+  algorithm: random_forest    # logistic_regression | ridge | random_forest |
+                              # gradient_boosting | xgboost | lightgbm
+  params: {}                  # hyperparameter overrides, e.g. {n_estimators: 500}
+
+output:
+  model_dir: models
+  report_dir: reports
+  figure_dir: reports/figures
+  log_dir: logs
+  overwrite: false            # never overwrite artifacts unless --overwrite
+
+experiments:
+  db: experiments.db

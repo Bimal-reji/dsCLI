@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+*.whl
+.venv/
+venv/
+
+# Data
+data/raw/*
+data/interim/*
+data/processed/*
+data/external/*
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+!data/external/.gitkeep
+
+# Models & artifacts
+models/*
+!models/.gitkeep
+
+# Reports
+reports/figures/*
+!reports/figures/.gitkeep
+reports/reports/*
+
+# Logs & experiment state
+logs/*
+!logs/.gitkeep
+experiments.db
+*.db-journal
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Tooling
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# OS
+.DS_Store
+Thumbs.db
