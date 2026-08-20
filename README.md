@@ -1,4 +1,4 @@
-# dscli — Data Science CLI
+# dscli — Data Science CLI.
 
 A production-quality command-line interface for managing the complete
 ML/data-science workflow from the terminal: initialize a project, load and.
